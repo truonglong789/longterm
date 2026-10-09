@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>LongTerm</title>
+
+<style>
+
+body{margin:0;background:#101410;color:#b8f5a5;font-family:monospace}
+
+header{padding:18px;background:#1c261c}
+
+h2{color:#80ff70}
+
+#terminal{padding:14px;height:65vh;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere}
+
+#bar{display:flex;gap:8px;padding:12px;background:#1c261c}
+
+input{flex:1;min-width:0;background:#101410;color:white;border:1px solid #53734b;padding:12px;font:inherit}
+
+button{background:#70e65e;border:0;padding:10px;font-weight:bold}
+
+.line{margin-bottom:9px}
+
+.prompt{color:#80ff70}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h2>LongTerm</h2>
+
+<small>Terminal • iPad Edition</small>
+
+</header>
+
+<div id="terminal">
+
+<div class="line">Chào mừng đến với LongTerm!</div>
+
+<div class="line">Nhập help để xem lệnh.</div>
+
+</div>
+
+<div id="bar">
+
+<input id="cmd" placeholder="Nhập lệnh...">
+
+<button onclick="run()">Chạy</button>
+
+</div>
+
+<script>
+
+const terminal=document.getElementById('terminal');
+
+const input=document.getElementById('cmd');
+
+function run(){
+
+ const c=input.value.trim();
+
+ if(!c)return;
+
+ const line=document.createElement('div');
+  
