@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 
 <html lang="vi">
@@ -14,21 +16,19 @@
 
 body{margin:0;background:#101410;color:#b8f5a5;font-family:monospace}
 
-header{padding:18px;background:#1c261c}
+header{padding:16px;background:#1c261c}
 
-h2{color:#80ff70}
+h2{color:#80ff70;margin:0 0 8px}
 
 #terminal{padding:14px;height:65vh;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere}
 
 #bar{display:flex;gap:8px;padding:12px;background:#1c261c}
 
-input{flex:1;min-width:0;background:#101410;color:white;border:1px solid #53734b;padding:12px;font:inherit}
+input{flex:1;min-width:0;background:#101410;color:white;border:1px solid #53734b;padding:12px;font:16px monospace}
 
-button{background:#70e65e;border:0;padding:10px;font-weight:bold}
+button{background:#70e65e;color:#101410;border:0;border-radius:6px;padding:12px;font-weight:bold}
 
-.line{margin-bottom:9px}
-
-.prompt{color:#80ff70}
+.line{margin-bottom:10px}
 
 </style>
 
@@ -36,41 +36,42 @@ button{background:#70e65e;border:0;padding:10px;font-weight:bold}
 
 <body>
 
-<header>
-
-<h2>LongTerm</h2>
-
-<small>Terminal • iPad Edition</small>
-
-</header>
+<header><h2>LongTerm</h2><small>Terminal • iPad Edition</small></header>
 
 <div id="terminal">
 
-<div class="line">Chào mừng đến với LongTerm!</div>
+<div class="line">LongTerm đã khởi động.</div>
 
-<div class="line">Nhập help để xem lệnh.</div>
-
-</div>
-
-<div id="bar">
-
-<input id="cmd" placeholder="Nhập lệnh...">
-
-<button onclick="run()">Chạy</button>
+<div class="line">Nhập help rồi bấm Chạy.</div>
 
 </div>
+
+<form id="bar">
+
+<input id="cmd" placeholder="Nhập lệnh..." autocomplete="off">
+
+<button type="submit">Chạy</button>
+
+</form>
 
 <script>
+
+(function(){
 
 const terminal=document.getElementById('terminal');
 
 const input=document.getElementById('cmd');
 
-function run(){
+document.getElementById('bar').addEventListener('submit',function(e){
 
- const c=input.value.trim();
+e.preventDefault();
 
- if(!c)return;
+const c=input.value.trim();
 
- const line=document.createElement('div');
-  
+if(!c)return;
+
+const line=document.createElement('div');
+
+line.className='line';
+
+line.textContent='longterm $ '+c;
